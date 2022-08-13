@@ -1,0 +1,94 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/ex1": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/main.Struct3"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "field3": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/main.Struct1"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/ex2": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/main.Struct3"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "field3": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "main.Struct1": {
+            "type": "object",
+            "properties": {
+                "field1": {
+                    "type": "string"
+                }
+            }
+        },
+        "main.Struct2": {
+            "type": "object",
+            "properties": {
+                "field1": {
+                    "type": "string"
+                },
+                "field2": {
+                    "type": "string"
+                }
+            }
+        },
+        "main.Struct3": {
+            "type": "object",
+            "properties": {
+                "field3": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/main.Struct2"
+                    }
+                }
+            }
+        }
+    }
+}

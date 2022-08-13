@@ -1,0 +1,52 @@
+definitions:
+  main.Struct1:
+    properties:
+      field1:
+        type: string
+    type: object
+  main.Struct2:
+    properties:
+      field1:
+        type: string
+      field2:
+        type: string
+    type: object
+  main.Struct3:
+    properties:
+      field3:
+        items:
+          $ref: '#/definitions/main.Struct2'
+        type: array
+    type: object
+info:
+  contact: {}
+paths:
+  /ex1:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/main.Struct3'
+            - properties:
+                field3:
+                  items:
+                    $ref: '#/definitions/main.Struct1'
+                  type: array
+              type: object
+  /ex2:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/main.Struct3'
+            - properties:
+                field3:
+                  items:
+                    type: string
+                  type: array
+              type: object
+swagger: "2.0"
